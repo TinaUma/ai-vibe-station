@@ -1,18 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap');
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #080b0f;
-  --bg-secondary: #0d1117;
-  --bg-card: #111820;
-  --border: #1e2a38;
-  --border-accent: #2a3f55;
-  --text-primary: #e8edf2;
-  --text-secondary: #8b98a8;
-  --text-muted: #4a5568;
-  --accent-green: #00d4a1;
-  --accent-blue: #3b82f6;
-  --accent-glow: rgba(0, 212, 161, 0.15);
+  --bg-primary: #f9f9fb;
+  --bg-secondary: #f2f4f6;
+  --bg-card: #ffffff;
+
+  --border: rgba(12, 14, 16, 0.07);
+  --border-accent: rgba(0, 91, 194, 0.18);
+
+  --text-primary: #2d3338;
+  --text-secondary: #596065;
+  --text-muted: #9aa1a8;
+
+  --accent: #005bc2;
+  --accent-dim: #0050ab;
+  --accent-bg: rgba(0, 91, 194, 0.06);
+
+  --shadow-sm: 0px 2px 8px rgba(12, 14, 16, 0.04), 0px 1px 2px rgba(12, 14, 16, 0.03);
+  --shadow-md: 0px 4px 12px rgba(12, 14, 16, 0.05), 0px 20px 40px rgba(12, 14, 16, 0.07);
 }
 
 * {
@@ -34,11 +40,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+.font-serif {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-mono {
+  font-family: 'DM Mono', monospace;
+}
+
 ::-webkit-scrollbar {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border-accent);
@@ -46,8 +60,8 @@ body {
 }
 
 ::selection {
-  background: var(--accent-glow);
-  color: var(--accent-green);
+  background: var(--accent-bg);
+  color: var(--accent);
 }
 
 .container-site {

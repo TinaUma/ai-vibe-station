@@ -4,7 +4,7 @@ const links = [
     label: 'Email',
     value: 'tina.jumasheva@gmail.com',
     href: 'mailto:tina.jumasheva@gmail.com',
-    code: 'mailto',
+    code: 'mail',
   },
   {
     label: 'Telegram',
@@ -33,8 +33,8 @@ const links = [
     <div class="contact-grid">
 
       <div class="contact-left">
-        <span class="section-label font-mono">// 04 — contact</span>
-        <h2 class="contact-title">
+        <span class="section-label font-mono">04 / contact</span>
+        <h2 class="contact-title font-serif">
           Готова к&nbsp;новым<br />проектам
         </h2>
         <p class="contact-sub">
@@ -46,10 +46,8 @@ const links = [
       <div class="contact-right">
         {links.map(link => (
           <a href={link.href} target="_blank" rel="noopener noreferrer" class="contact-link">
-            <span class="contact-link-meta">
-              <span class="contact-code font-mono">{link.code}</span>
-              <span class="contact-label">{link.label}</span>
-            </span>
+            <span class="contact-code font-mono">{link.code}</span>
+            <span class="contact-label">{link.label}</span>
             <span class="contact-value font-mono">{link.value}</span>
             <span class="contact-arrow">→</span>
           </a>
@@ -58,10 +56,8 @@ const links = [
 
     </div>
 
-    <div class="footer-line">
-      <span class="font-mono" style="font-size: 0.7rem; color: var(--text-muted); letter-spacing: 0.1em;">
-        © 2025 Tina Umasheva — built with Astro + Claude Code
-      </span>
+    <div class="footer-line font-mono">
+      © 2025 Tina Umasheva — built with Astro + Claude Code
     </div>
 
   </div>
@@ -70,31 +66,32 @@ const links = [
 <style>
   .contact-section {
     padding: 6rem 0 4rem;
+    background: var(--bg-secondary);
   }
 
   .contact-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    gap: 5rem;
     margin-bottom: 4rem;
     align-items: start;
   }
 
   .section-label {
     display: block;
-    font-size: 0.75rem;
-    color: var(--accent-green);
-    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-bottom: 1.25rem;
   }
 
   .contact-title {
     font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.02em;
     color: var(--text-primary);
-    line-height: 1.15;
+    line-height: 1.2;
     margin-bottom: 1rem;
   }
 
@@ -105,16 +102,17 @@ const links = [
   }
 
   .contact-right {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border);
+    background: var(--bg-card);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
   }
 
   .contact-link {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding: 1.25rem 1.5rem;
+    padding: 1.1rem 1.5rem;
     border-bottom: 1px solid var(--border);
     text-decoration: none;
     transition: background 0.2s;
@@ -125,40 +123,39 @@ const links = [
   }
 
   .contact-link:hover {
-    background: var(--bg-card);
+    background: var(--accent-bg);
   }
 
   .contact-link:hover .contact-arrow {
-    color: var(--accent-green);
-    transform: translateX(4px);
-  }
-
-  .contact-link-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    min-width: 110px;
+    color: var(--accent);
+    transform: translateX(3px);
   }
 
   .contact-code {
-    font-size: 0.65rem;
-    color: var(--accent-green);
-    letter-spacing: 0.12em;
-    border: 1px solid rgba(0, 212, 161, 0.3);
+    font-size: 0.62rem;
+    color: var(--accent);
+    background: var(--accent-bg);
+    border: 1px solid var(--border-accent);
     padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
+    flex-shrink: 0;
+    min-width: 2.5rem;
+    text-align: center;
   }
 
   .contact-label {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
+    min-width: 4rem;
   }
 
   .contact-value {
     flex: 1;
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     color: var(--text-primary);
-    letter-spacing: 0.02em;
+    letter-spacing: 0.01em;
   }
 
   .contact-arrow {
@@ -170,6 +167,9 @@ const links = [
   .footer-line {
     padding-top: 2rem;
     border-top: 1px solid var(--border);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
   }
 
   @media (max-width: 768px) {

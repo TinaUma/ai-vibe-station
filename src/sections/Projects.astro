@@ -2,23 +2,53 @@
 const projects = [
   {
     id: '01',
-    title: 'AI-ассистент на SMAIPL',
-    type: 'AI Assistant',
+    title: 'Utility Bot',
+    type: 'Telegram Bot',
     description:
-      'Разработала и презентовала AI-ассистента в рамках стажировки. Проектирование промтов, логика диалога, демонстрация возможностей LLM.',
-    tags: ['Prompt Engineering', 'LLM', 'Demo'],
-    link: 'https://www.youtube.com/watch?v=tts6Ujd2lJo',
-    linkLabel: 'смотреть демо →',
+      'Телеграм-бот для учёта коммунальных платежей. Принимает показания счётчиков, автоматически рассчитывает стоимость воды и электричества по тарифам, сохраняет в Google Sheets и шлёт напоминания.',
+    tags: ['Python', 'Telegram API', 'Google Sheets', 'Automation'],
+    link: 'https://github.com/TinaUma/utility-bot',
+    linkLabel: 'GitHub →',
   },
   {
     id: '02',
-    title: 'ai-vibe-station',
-    type: 'Vibe-coding',
+    title: 'PitchMe AI Matcher',
+    type: 'HR Automation',
     description:
-      'Этот сайт — живой пример вайб-кодинга. Astro + Tailwind, модульная архитектура, Dark Engineering стиль. Сделан с Claude Code.',
-    tags: ['Astro', 'Tailwind', 'Claude Code', 'Portfolio'],
-    link: 'https://github.com/TinaUma/ai-vibe-station',
+      'AI-инструмент для HR-скрининга: принимает PDF резюме и описание вакансии через webhook, оценивает соответствие кандидата через GPT-4o и возвращает структурированный match-score отчёт.',
+    tags: ['React', 'n8n', 'GPT-4o', 'TypeScript', 'Vite'],
+    link: 'https://github.com/TinaUma/pitchme-ai-matcher',
     linkLabel: 'GitHub →',
+  },
+  {
+    id: '03',
+    title: 'AI Media Factory',
+    type: 'Autonomous Pipeline',
+    description:
+      'Полностью автономный конвейер новостных видео: ежедневно забирает новости AI-стартапов с Hacker News, генерирует GPT-4o сценарий, создаёт видео с аватаром и публикует в YouTube Shorts.',
+    tags: ['n8n', 'GPT-4o', 'HeyGen', 'ElevenLabs', 'YouTube API'],
+    link: 'https://github.com/TinaUma/ai-media-factory',
+    linkLabel: 'GitHub →',
+  },
+  {
+    id: '04',
+    title: 'RAG + n8n + Supabase',
+    type: 'Knowledge Base',
+    description:
+      'RAG-агент на n8n: автоматически забирает документы с Яндекс Диска, хранит их как векторы в Supabase и отвечает на вопросы пользователя с краткосрочной и долгосрочной памятью.',
+    tags: ['n8n', 'Supabase', 'RAG', 'OpenAI', 'Yandex Disk'],
+    link: 'https://github.com/TinaUma/rag-n8n-supabase-YANDEXdisk',
+    linkLabel: 'GitHub →',
+  },
+  {
+    id: '05',
+    title: 'AI-ассистент SMAIPL',
+    type: 'AI Assistant',
+    description:
+      'Разработала и презентовала AI-ассистента в рамках стажировки на платформе SMAIPL. Проектирование промтов, логика диалога, демонстрация возможностей LLM.',
+    tags: ['Prompt Engineering', 'LLM', 'Demo'],
+    link: 'https://www.youtube.com/watch?v=tts6Ujd2lJo',
+    linkLabel: 'смотреть демо →',
   },
 ];
 ---
@@ -27,8 +57,8 @@ const projects = [
   <div class="container-site">
 
     <div class="section-header">
-      <span class="section-label font-mono">// 03 — projects</span>
-      <h2 class="section-title">Проекты</h2>
+      <span class="section-label font-mono">03 / projects</span>
+      <h2 class="section-title font-serif">Проекты</h2>
     </div>
 
     <div class="projects-grid">
@@ -40,25 +70,20 @@ const projects = [
           </div>
           <h3 class="project-title">{p.title}</h3>
           <p class="project-desc">{p.description}</p>
-          <div class="project-tags">
-            {p.tags.map(tag => (
-              <span class="tag font-mono">{tag}</span>
-            ))}
+          <div class="project-bottom">
+            <div class="project-tags">
+              {p.tags.map(tag => (
+                <span class="tag font-mono">{tag}</span>
+              ))}
+            </div>
+            {p.link && (
+              <a href={p.link} target="_blank" rel="noopener noreferrer" class="project-link font-mono">
+                {p.linkLabel}
+              </a>
+            )}
           </div>
-          {p.link && (
-            <a href={p.link} target="_blank" rel="noopener noreferrer" class="project-link font-mono">
-              {p.linkLabel}
-            </a>
-          )}
         </div>
       ))}
-
-      <!-- Placeholder for more projects -->
-      <div class="project-card project-card--placeholder">
-        <p class="font-mono" style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.05em;">
-          // more projects in progress
-        </p>
-      </div>
     </div>
 
   </div>
@@ -67,6 +92,7 @@ const projects = [
 <style>
   .projects-section {
     padding: 6rem 0;
+    background: var(--bg-secondary);
     border-bottom: 1px solid var(--border);
   }
 
@@ -76,16 +102,16 @@ const projects = [
 
   .section-label {
     display: block;
-    font-size: 0.75rem;
-    color: var(--accent-green);
-    letter-spacing: 0.2em;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     margin-bottom: 0.75rem;
   }
 
   .section-title {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 700;
+    font-weight: 600;
     letter-spacing: -0.02em;
     color: var(--text-primary);
   }
@@ -93,31 +119,28 @@ const projects = [
   .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border: 1px solid var(--border);
+    gap: 1.5rem;
+  }
+
+  /* Last row: 2 cards — center them */
+  .projects-grid .project-card:nth-child(4) {
+    grid-column: 1;
   }
 
   .project-card {
-    padding: 2rem;
-    border-right: 1px solid var(--border);
+    background: var(--bg-card);
+    border-radius: 0.5rem;
+    padding: 1.75rem;
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
-    transition: background 0.2s;
-  }
-
-  .project-card:last-child {
-    border-right: none;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
   }
 
   .project-card:hover {
-    background: var(--bg-card);
-  }
-
-  .project-card--placeholder {
-    align-items: center;
-    justify-content: center;
-    min-height: 180px;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
   }
 
   .project-top {
@@ -127,74 +150,81 @@ const projects = [
   }
 
   .project-id {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     color: var(--text-muted);
     letter-spacing: 0.1em;
   }
 
   .project-type {
-    font-size: 0.65rem;
-    color: var(--accent-green);
-    letter-spacing: 0.12em;
+    font-size: 0.62rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    border: 1px solid rgba(0, 212, 161, 0.3);
-    padding: 0.1rem 0.4rem;
+    background: var(--accent-bg);
+    border: 1px solid var(--border-accent);
+    padding: 0.12rem 0.45rem;
+    border-radius: 99px;
   }
 
   .project-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
     letter-spacing: -0.01em;
   }
 
   .project-desc {
-    font-size: 0.85rem;
+    font-size: 0.84rem;
     color: var(--text-secondary);
-    line-height: 1.7;
+    line-height: 1.75;
     flex: 1;
+  }
+
+  .project-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: auto;
   }
 
   .project-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem;
+    gap: 0.35rem;
   }
 
   .tag {
-    font-size: 0.65rem;
+    font-size: 0.62rem;
     padding: 0.15rem 0.5rem;
+    border-radius: 99px;
+    background: var(--bg-secondary);
     border: 1px solid var(--border);
     color: var(--text-muted);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
   .project-link {
-    font-size: 0.75rem;
-    color: var(--accent-green);
+    font-size: 0.73rem;
+    color: var(--accent);
     text-decoration: none;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.04em;
     transition: opacity 0.2s;
-    margin-top: 0.25rem;
   }
 
   .project-link:hover {
     opacity: 0.7;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
     .projects-grid {
       grid-template-columns: 1fr;
-    }
-
-    .project-card {
-      border-right: none;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .project-card:last-child {
-      border-bottom: none;
     }
   }
 </style>
