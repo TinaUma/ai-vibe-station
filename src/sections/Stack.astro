@@ -1,0 +1,198 @@
+---
+const roles = [
+  {
+    index: '01',
+    title: 'Prompt Engineer / Vibe-coder',
+    tags: ['LLM Integration', 'Chain-of-Thought', 'RAG', 'n8n', 'Automation'],
+    description:
+      'Создание логики AI-систем: проектирование промтов, интеграция LLM (GPT-4, Claude, Groq), автоматизация флоу через n8n и Make. Вайб-кодинг с Cursor — от идеи до работающего прототипа.',
+    accent: true,
+  },
+  {
+    index: '02',
+    title: 'Product Designer',
+    tags: ['Product Thinking', 'UX Research', 'Rapid Prototyping', 'Business Logic'],
+    description:
+      'Проектирование путей пользователя, декомпозиция задач бизнеса, построение логики продукта. 7+ лет опыта в архитектуре и дизайне сложных систем.',
+    accent: false,
+  },
+  {
+    index: '03',
+    title: 'UI/UX & Systems',
+    tags: ['Figma', 'Design Systems', 'Interaction Design', 'AI Visuals'],
+    description:
+      'Интерфейсы как часть системы. Figma, AI-генерация образов, иллюстрация. Эстетика, которая работает — не украшение, а коммуникация.',
+    accent: false,
+  },
+];
+---
+
+<section id="stack" class="stack-section">
+  <div class="container-site">
+
+    <div class="section-header">
+      <span class="section-label font-mono">// 01 — stack</span>
+      <h2 class="section-title">Чем я занимаюсь</h2>
+    </div>
+
+    <div class="roles-list">
+      {roles.map(role => (
+        <div class:list={['role-card', { 'role-card--accent': role.accent }]}>
+          <span class="role-index font-mono">{role.index}</span>
+          <div class="role-body">
+            <h3 class="role-title">{role.title}</h3>
+            <p class="role-desc">{role.description}</p>
+            <div class="role-tags">
+              {role.tags.map(tag => (
+                <span class="tag font-mono">{tag}</span>
+              ))}
+            </div>
+          </div>
+          {role.accent && (
+            <span class="role-badge font-mono">primary</span>
+          )}
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .stack-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--accent-green);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .roles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .role-card {
+    display: grid;
+    grid-template-columns: 4rem 1fr auto;
+    align-items: start;
+    gap: 2rem;
+    padding: 2rem;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .role-card:last-child {
+    border-bottom: none;
+  }
+
+  .role-card:hover {
+    background: var(--bg-card);
+  }
+
+  .role-card--accent {
+    background: var(--bg-card);
+    border-left: 2px solid var(--accent-green);
+  }
+
+  .role-card--accent:hover {
+    background: rgba(0, 212, 161, 0.05);
+  }
+
+  .role-index {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    padding-top: 0.2rem;
+    letter-spacing: 0.1em;
+  }
+
+  .role-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .role-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .role-card--accent .role-title {
+    color: var(--text-primary);
+  }
+
+  .role-desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    max-width: 640px;
+  }
+
+  .role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.25rem;
+  }
+
+  .tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .role-card--accent .tag {
+    border-color: rgba(0, 212, 161, 0.3);
+    color: var(--accent-green);
+  }
+
+  .role-badge {
+    font-size: 0.65rem;
+    color: var(--accent-green);
+    border: 1px solid rgba(0, 212, 161, 0.4);
+    padding: 0.15rem 0.5rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    align-self: flex-start;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .role-card {
+      grid-template-columns: 2.5rem 1fr;
+      gap: 1rem;
+      padding: 1.5rem;
+    }
+
+    .role-badge {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+    }
+  }
+</style>

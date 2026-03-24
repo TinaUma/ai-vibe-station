@@ -1,0 +1,80 @@
+---
+const links = [
+  { href: '#stack', label: 'stack' },
+  { href: '#skills', label: 'skills' },
+  { href: '#projects', label: 'projects' },
+  { href: '#contact', label: 'contact' },
+];
+---
+
+<nav class="nav font-mono">
+  <div class="container-site nav-inner">
+    <a href="/" class="nav-logo">
+      <span style="color: var(--accent-green)">tina</span><span style="color: var(--text-muted)">.uma</span>
+    </a>
+    <ul class="nav-links">
+      {links.map(link => (
+        <li>
+          <a href={link.href} class="nav-link">
+            <span style="color: var(--text-muted)">/</span>{link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8, 11, 15, 0.85);
+    backdrop-filter: blur(12px);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo {
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--accent-green);
+  }
+
+  @media (max-width: 640px) {
+    .nav-links {
+      gap: 1.2rem;
+    }
+
+    .nav-link {
+      font-size: 0.75rem;
+    }
+  }
+</style>

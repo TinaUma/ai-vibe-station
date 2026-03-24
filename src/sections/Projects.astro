@@ -1,0 +1,200 @@
+---
+const projects = [
+  {
+    id: '01',
+    title: 'AI-ассистент на SMAIPL',
+    type: 'AI Assistant',
+    description:
+      'Разработала и презентовала AI-ассистента в рамках стажировки. Проектирование промтов, логика диалога, демонстрация возможностей LLM.',
+    tags: ['Prompt Engineering', 'LLM', 'Demo'],
+    link: 'https://www.youtube.com/watch?v=tts6Ujd2lJo',
+    linkLabel: 'смотреть демо →',
+  },
+  {
+    id: '02',
+    title: 'ai-vibe-station',
+    type: 'Vibe-coding',
+    description:
+      'Этот сайт — живой пример вайб-кодинга. Astro + Tailwind, модульная архитектура, Dark Engineering стиль. Сделан с Claude Code.',
+    tags: ['Astro', 'Tailwind', 'Claude Code', 'Portfolio'],
+    link: 'https://github.com/TinaUma/ai-vibe-station',
+    linkLabel: 'GitHub →',
+  },
+];
+---
+
+<section id="projects" class="projects-section">
+  <div class="container-site">
+
+    <div class="section-header">
+      <span class="section-label font-mono">// 03 — projects</span>
+      <h2 class="section-title">Проекты</h2>
+    </div>
+
+    <div class="projects-grid">
+      {projects.map(p => (
+        <div class="project-card">
+          <div class="project-top">
+            <span class="project-id font-mono">{p.id}</span>
+            <span class="project-type font-mono">{p.type}</span>
+          </div>
+          <h3 class="project-title">{p.title}</h3>
+          <p class="project-desc">{p.description}</p>
+          <div class="project-tags">
+            {p.tags.map(tag => (
+              <span class="tag font-mono">{tag}</span>
+            ))}
+          </div>
+          {p.link && (
+            <a href={p.link} target="_blank" rel="noopener noreferrer" class="project-link font-mono">
+              {p.linkLabel}
+            </a>
+          )}
+        </div>
+      ))}
+
+      <!-- Placeholder for more projects -->
+      <div class="project-card project-card--placeholder">
+        <p class="font-mono" style="color: var(--text-muted); font-size: 0.8rem; letter-spacing: 0.05em;">
+          // more projects in progress
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--accent-green);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .project-card {
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: background 0.2s;
+  }
+
+  .project-card:last-child {
+    border-right: none;
+  }
+
+  .project-card:hover {
+    background: var(--bg-card);
+  }
+
+  .project-card--placeholder {
+    align-items: center;
+    justify-content: center;
+    min-height: 180px;
+  }
+
+  .project-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .project-id {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+  }
+
+  .project-type {
+    font-size: 0.65rem;
+    color: var(--accent-green);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border: 1px solid rgba(0, 212, 161, 0.3);
+    padding: 0.1rem 0.4rem;
+  }
+
+  .project-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .project-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .tag {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.5rem;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .project-link {
+    font-size: 0.75rem;
+    color: var(--accent-green);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: opacity 0.2s;
+    margin-top: 0.25rem;
+  }
+
+  .project-link:hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .project-card {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-card:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

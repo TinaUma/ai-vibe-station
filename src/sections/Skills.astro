@@ -1,0 +1,188 @@
+---
+const skillGroups = [
+  {
+    category: 'Промт-инжиниринг',
+    code: 'prompt_engineering',
+    items: [
+      'Zero-shot / Few-shot / Chain-of-Thought',
+      'Системные и пользовательские промты',
+      'Тестирование на галлюцинации',
+      'Контекстное проектирование',
+      'Итеративная отладка',
+    ],
+  },
+  {
+    category: 'AI & Автоматизация',
+    code: 'ai_automation',
+    items: [
+      'LLM: GPT-4, Claude, Groq',
+      'RAG + векторные БД (FAISS, Chroma)',
+      'n8n (вложенные флоу, webhooks)',
+      'Make, Voiceflow, 11Labs, HeyGen',
+      'Embeddings & семантический поиск',
+    ],
+  },
+  {
+    category: 'Разработка',
+    code: 'development',
+    items: [
+      'Python (LangChain, Requests, JSON)',
+      'Cursor vibe-coding',
+      'Git, GitHub / GitLab',
+      'Astro, HTML/CSS',
+      'VS Code',
+    ],
+  },
+  {
+    category: 'Design & Visual',
+    code: 'design',
+    items: [
+      'Figma, Design Systems',
+      'Adobe Photoshop, Procreate',
+      'AI-генерация образов (Midjourney)',
+      'UX Research & Prototyping',
+      'Архитектурная визуализация',
+    ],
+  },
+];
+---
+
+<section id="skills" class="skills-section">
+  <div class="container-site">
+
+    <div class="section-header">
+      <span class="section-label font-mono">// 02 — skills</span>
+      <h2 class="section-title">Инструменты</h2>
+    </div>
+
+    <div class="skills-grid">
+      {skillGroups.map(group => (
+        <div class="skill-group">
+          <div class="skill-group-header">
+            <span class="skill-code font-mono">{group.code}</span>
+            <h3 class="skill-category">{group.category}</h3>
+          </div>
+          <ul class="skill-list font-mono">
+            {group.items.map(item => (
+              <li class="skill-item">
+                <span class="skill-bullet" aria-hidden="true">›</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .skills-section {
+    padding: 6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--accent-green);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+  }
+
+  .skill-group {
+    padding: 2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+
+  .skill-group:nth-child(2n) {
+    border-right: none;
+  }
+
+  .skill-group:nth-child(n+3) {
+    border-bottom: none;
+  }
+
+  .skill-group:hover {
+    background: var(--bg-card);
+  }
+
+  .skill-group-header {
+    margin-bottom: 1.25rem;
+  }
+
+  .skill-code {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--accent-green);
+    letter-spacing: 0.15em;
+    text-transform: lowercase;
+    margin-bottom: 0.4rem;
+    opacity: 0.7;
+  }
+
+  .skill-category {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .skill-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .skill-bullet {
+    color: var(--accent-green);
+    flex-shrink: 0;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 640px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skill-group {
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .skill-group:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

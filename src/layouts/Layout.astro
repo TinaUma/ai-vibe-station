@@ -1,0 +1,28 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Tina Uma — AI-Driven Product Engineer',
+  description = 'Prompt Engineer, Vibe-coder, Product Designer. Проектирую полезные системы, соединяю AI-инструменты и довожу идеи до работающего продукта.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="author" content="Tina Umasheva" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
