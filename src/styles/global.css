@@ -1,71 +1,85 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #f9f9fb;
-  --bg-secondary: #f2f4f6;
-  --bg-card: #ffffff;
+  --bg: #ffffff;
+  --bg-alt: #f7f7f8;
+  --bg-dark: #111111;
+  --bg-dark2: #1a1a1a;
 
-  --border: rgba(12, 14, 16, 0.07);
-  --border-accent: rgba(0, 91, 194, 0.18);
+  --text: #111111;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-on-dark: #f0f0f0;
+  --text-on-dark-secondary: #9ca3af;
 
-  --text-primary: #2d3338;
-  --text-secondary: #596065;
-  --text-muted: #9aa1a8;
+  --orange: #ff5500;
+  --orange-dark: #e04900;
+  --orange-bg: rgba(255, 85, 0, 0.08);
 
-  --accent: #005bc2;
-  --accent-dim: #0050ab;
-  --accent-bg: rgba(0, 91, 194, 0.06);
+  --border: #e5e7eb;
+  --border-dark: rgba(255,255,255,0.1);
 
-  --shadow-sm: 0px 2px 8px rgba(12, 14, 16, 0.04), 0px 1px 2px rgba(12, 14, 16, 0.03);
-  --shadow-md: 0px 4px 12px rgba(12, 14, 16, 0.05), 0px 20px 40px rgba(12, 14, 16, 0.07);
+  --shadow: 0 2px 12px rgba(0,0,0,0.07), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.1), 0 2px 8px rgba(0,0,0,0.06);
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'IBM Plex Sans', sans-serif;
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 
-.font-serif {
-  font-family: 'Playfair Display', serif;
-}
+.font-head { font-family: 'Manrope', sans-serif; }
+.font-mono { font-family: 'IBM Plex Mono', monospace; }
 
-.font-mono {
-  font-family: 'DM Mono', monospace;
-}
-
-::-webkit-scrollbar {
-  width: 4px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg-secondary);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--border-accent);
-  border-radius: 2px;
-}
-
-::selection {
-  background: var(--accent-bg);
-  color: var(--accent);
-}
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg-alt); }
+::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+::selection { background: var(--orange-bg); color: var(--orange); }
 
 .container-site {
-  max-width: 1140px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 1.75rem;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 1rem;
+}
+.section-label::before {
+  content: '';
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-family: 'Manrope', sans-serif;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.section-title--light {
+  color: var(--text-on-dark);
 }

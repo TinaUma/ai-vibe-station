@@ -1,75 +1,56 @@
 ---
 const links = [
-  {
-    label: 'Email',
-    value: 'tina.jumasheva@gmail.com',
-    href: 'mailto:tina.jumasheva@gmail.com',
-    code: 'mail',
-  },
-  {
-    label: 'Telegram',
-    value: '@tina_uma',
-    href: 'https://t.me/tina_uma',
-    code: 'tg',
-  },
-  {
-    label: 'GitHub',
-    value: 'TinaUma',
-    href: 'https://github.com/TinaUma',
-    code: 'gh',
-  },
-  {
-    label: 'Behance',
-    value: 'tinayumasheva',
-    href: 'https://www.behance.net/tinayumasheva',
-    code: 'be',
-  },
+  { label: 'Email', value: 'tina.jumasheva@gmail.com', href: 'mailto:tina.jumasheva@gmail.com' },
+  { label: 'Telegram', value: '@tina_uma', href: 'https://t.me/tina_uma' },
+  { label: 'GitHub', value: 'github.com/TinaUma', href: 'https://github.com/TinaUma' },
+  { label: 'Behance', value: 'behance.net/tinayumasheva', href: 'https://www.behance.net/tinayumasheva' },
 ];
 ---
 
 <section id="contact" class="contact-section">
   <div class="container-site">
-
-    <div class="contact-grid">
+    <div class="contact-inner">
 
       <div class="contact-left">
-        <span class="section-label font-mono">04 / contact</span>
-        <h2 class="contact-title font-serif">
+        <span class="section-label" style="color:var(--orange)">contact</span>
+        <h2 class="contact-title font-head">
           Готова к&nbsp;новым<br />проектам
         </h2>
         <p class="contact-sub">
           Открыта к сотрудничеству в AI-командах,<br />
           продуктовых лабораториях и стартапах.
         </p>
+        <div class="contact-tag font-mono">Москва · Россия</div>
       </div>
 
       <div class="contact-right">
-        {links.map(link => (
-          <a href={link.href} target="_blank" rel="noopener noreferrer" class="contact-link">
-            <span class="contact-code font-mono">{link.code}</span>
-            <span class="contact-label">{link.label}</span>
-            <span class="contact-value font-mono">{link.value}</span>
-            <span class="contact-arrow">→</span>
+        {links.map(l => (
+          <a href={l.href} target="_blank" rel="noopener noreferrer" class="contact-row">
+            <span class="row-label">{l.label}</span>
+            <span class="row-value font-mono">{l.value}</span>
+            <span class="row-arrow">→</span>
           </a>
         ))}
       </div>
 
     </div>
 
-    <div class="footer-line font-mono">
-      © 2025 Tina Umasheva — built with Astro + Claude Code
+    <div class="footer font-mono">
+      <span>© 2025 Tina Umasheva</span>
+      <span class="footer-sep">·</span>
+      <span>Built with Astro + Claude Code</span>
     </div>
-
   </div>
 </section>
 
 <style>
   .contact-section {
-    padding: 6rem 0 4rem;
-    background: var(--bg-secondary);
+    padding: 5rem 0 3.5rem;
+    background: var(--bg);
+    border-top: 1px solid var(--border);
   }
 
-  .contact-grid {
+  .contact-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 5rem;
@@ -78,38 +59,58 @@ const links = [
   }
 
   .section-label {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    margin-bottom: 1.25rem;
+    color: var(--orange);
+    margin-bottom: 1rem;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px; height: 2px;
+    background: var(--orange);
   }
 
   .contact-title {
-    font-size: clamp(1.75rem, 4vw, 2.75rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--text);
     line-height: 1.2;
     margin-bottom: 1rem;
   }
 
   .contact-sub {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .contact-tag {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   .contact-right {
-    background: var(--bg-card);
-    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
+    box-shadow: var(--shadow);
   }
 
-  .contact-link {
-    display: flex;
+  .contact-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
     align-items: center;
     gap: 1rem;
     padding: 1.1rem 1.5rem;
@@ -118,64 +119,42 @@ const links = [
     transition: background 0.2s;
   }
 
-  .contact-link:last-child {
-    border-bottom: none;
-  }
+  .contact-row:last-child { border-bottom: none; }
+  .contact-row:hover { background: var(--orange-bg); }
+  .contact-row:hover .row-arrow { color: var(--orange); transform: translateX(3px); }
 
-  .contact-link:hover {
-    background: var(--accent-bg);
-  }
-
-  .contact-link:hover .contact-arrow {
-    color: var(--accent);
-    transform: translateX(3px);
-  }
-
-  .contact-code {
-    font-size: 0.62rem;
-    color: var(--accent);
-    background: var(--accent-bg);
-    border: 1px solid var(--border-accent);
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    flex-shrink: 0;
-    min-width: 2.5rem;
-    text-align: center;
-  }
-
-  .contact-label {
+  .row-label {
     font-size: 0.8rem;
+    font-weight: 500;
     color: var(--text-secondary);
-    min-width: 4rem;
   }
 
-  .contact-value {
-    flex: 1;
+  .row-value {
     font-size: 0.78rem;
-    color: var(--text-primary);
+    color: var(--text);
     letter-spacing: 0.01em;
   }
 
-  .contact-arrow {
+  .row-arrow {
     font-size: 0.85rem;
     color: var(--text-muted);
     transition: color 0.2s, transform 0.2s;
   }
 
-  .footer-line {
+  .footer {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
     padding-top: 2rem;
     border-top: 1px solid var(--border);
     font-size: 0.7rem;
     color: var(--text-muted);
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
   }
 
-  @media (max-width: 768px) {
-    .contact-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
+  .footer-sep { color: var(--orange); }
+
+  @media (max-width: 720px) {
+    .contact-inner { grid-template-columns: 1fr; gap: 2.5rem; }
   }
 </style>

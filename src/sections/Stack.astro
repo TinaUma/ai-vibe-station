@@ -4,199 +4,172 @@ const roles = [
     index: '01',
     title: 'Prompt Engineer / Vibe-coder',
     tags: ['LLM Integration', 'Chain-of-Thought', 'RAG', 'n8n', 'Automation'],
-    description:
-      'Создание логики AI-систем: проектирование промтов, интеграция LLM (GPT-4, Claude, Groq), автоматизация флоу через n8n и Make. Вайб-кодинг с Cursor — от идеи до работающего прототипа.',
-    accent: true,
+    description: 'Создание логики AI-систем: проектирование промтов, интеграция LLM (GPT-4, Claude, Groq), автоматизация флоу через n8n и Make. Вайб-кодинг с Cursor — от идеи до работающего прототипа.',
+    primary: true,
   },
   {
     index: '02',
     title: 'Product Designer',
-    tags: ['Product Thinking', 'UX Research', 'Rapid Prototyping', 'Business Logic'],
-    description:
-      'Проектирование путей пользователя, декомпозиция задач бизнеса, построение логики продукта. 7+ лет опыта в архитектуре и дизайне сложных систем.',
-    accent: false,
+    tags: ['Product Thinking', 'UX Research', 'Rapid Prototyping'],
+    description: 'Проектирование путей пользователя, декомпозиция задач бизнеса, построение логики продукта. 7+ лет в архитектуре и дизайне сложных систем.',
+    primary: false,
   },
   {
     index: '03',
     title: 'UI/UX & Systems',
-    tags: ['Figma', 'Design Systems', 'Interaction Design', 'AI Visuals'],
-    description:
-      'Интерфейсы как часть системы. Figma, AI-генерация образов, иллюстрация. Эстетика, которая работает — не украшение, а коммуникация.',
-    accent: false,
+    tags: ['Figma', 'Design Systems', 'AI Visuals'],
+    description: 'Интерфейсы как часть системы. Figma, AI-генерация образов, иллюстрация. Эстетика, которая работает — не украшение, а коммуникация.',
+    primary: false,
   },
 ];
 ---
 
 <section id="stack" class="stack-section">
   <div class="container-site">
-
     <div class="section-header">
-      <span class="section-label font-mono">01 / stack</span>
-      <h2 class="section-title font-serif">Чем я занимаюсь</h2>
+      <span class="section-label">stack</span>
+      <h2 class="section-title section-title--light">Чем я занимаюсь</h2>
     </div>
 
-    <div class="roles-list">
-      {roles.map(role => (
-        <div class:list={['role-card', { 'role-card--accent': role.accent }]}>
-          <span class="role-index font-mono">{role.index}</span>
+    <div class="roles">
+      {roles.map(r => (
+        <div class:list={['role', { 'role--primary': r.primary }]}>
+          <div class="role-left">
+            <span class="role-num font-mono">{r.index}</span>
+          </div>
           <div class="role-body">
-            <h3 class="role-title">{role.title}</h3>
-            <p class="role-desc">{role.description}</p>
+            <div class="role-head">
+              <h3 class="role-title font-head">{r.title}</h3>
+              {r.primary && <span class="role-badge font-mono">primary</span>}
+            </div>
+            <p class="role-desc">{r.description}</p>
             <div class="role-tags">
-              {role.tags.map(tag => (
-                <span class="tag font-mono">{tag}</span>
-              ))}
+              {r.tags.map(t => <span class="tag font-mono">{t}</span>)}
             </div>
           </div>
-          {role.accent && (
-            <span class="role-badge font-mono">primary</span>
-          )}
         </div>
       ))}
     </div>
-
   </div>
 </section>
 
 <style>
   .stack-section {
-    padding: 6rem 0;
-    background: var(--bg-secondary);
-    border-bottom: 1px solid var(--border);
+    padding: 5rem 0;
+    background: var(--bg-dark);
   }
 
-  .section-header {
-    margin-bottom: 3rem;
-  }
+  .section-header { margin-bottom: 2.5rem; }
 
   .section-label {
-    display: block;
-    font-size: 0.7rem;
-    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.68rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
+    color: var(--orange);
     margin-bottom: 0.75rem;
   }
-
-  .section-title {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: var(--text-primary);
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 2px;
+    background: var(--orange);
   }
 
-  .roles-list {
+  .roles {
     display: flex;
     flex-direction: column;
     gap: 0;
-    border-radius: 0.5rem;
+    border: 1px solid var(--border-dark);
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--shadow-sm);
   }
 
-  .role-card {
+  .role {
     display: grid;
-    grid-template-columns: 3.5rem 1fr auto;
-    align-items: start;
+    grid-template-columns: 3rem 1fr;
     gap: 2rem;
-    padding: 2rem 2rem;
-    background: var(--bg-card);
-    border-bottom: 1px solid var(--border);
+    padding: 1.75rem 2rem;
+    border-bottom: 1px solid var(--border-dark);
     transition: background 0.2s;
-    position: relative;
   }
 
-  .role-card:last-child {
-    border-bottom: none;
-  }
+  .role:last-child { border-bottom: none; }
+  .role:hover { background: rgba(255,255,255,0.03); }
 
-  .role-card:hover {
-    background: var(--bg-secondary);
+  .role--primary {
+    border-left: 3px solid var(--orange);
+    background: rgba(255, 85, 0, 0.05);
   }
+  .role--primary:hover { background: rgba(255, 85, 0, 0.08); }
 
-  .role-card--accent {
-    border-left: 3px solid var(--accent);
-  }
-
-  .role-card--accent:hover {
-    background: var(--accent-bg);
-  }
-
-  .role-index {
-    font-size: 0.7rem;
-    color: var(--text-muted);
-    padding-top: 0.15rem;
+  .role-num {
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.25);
     letter-spacing: 0.08em;
+    padding-top: 0.15rem;
   }
 
-  .role-body {
+  .role-head {
     display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .role-title {
-    font-size: 1.1rem;
-    font-weight: 500;
-    color: var(--text-primary);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text-on-dark);
     letter-spacing: -0.01em;
+  }
+
+  .role-badge {
+    font-size: 0.6rem;
+    color: var(--orange);
+    border: 1px solid rgba(255,85,0,0.4);
+    padding: 0.1rem 0.45rem;
+    border-radius: 99px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   .role-desc {
     font-size: 0.875rem;
-    color: var(--text-secondary);
+    color: var(--text-on-dark-secondary);
     line-height: 1.75;
     max-width: 600px;
+    margin-bottom: 0.75rem;
   }
 
   .role-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin-top: 0.2rem;
   }
 
   .tag {
-    font-size: 0.65rem;
-    padding: 0.2rem 0.6rem;
+    font-size: 0.62rem;
+    padding: 0.18rem 0.55rem;
     border-radius: 99px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    color: var(--text-muted);
+    border: 1px solid var(--border-dark);
+    color: rgba(255,255,255,0.45);
     letter-spacing: 0.06em;
     text-transform: uppercase;
   }
 
-  .role-card--accent .tag {
-    background: var(--accent-bg);
-    border-color: var(--border-accent);
-    color: var(--accent);
+  .role--primary .tag {
+    border-color: rgba(255,85,0,0.35);
+    color: rgba(255,133,66,0.9);
   }
 
-  .role-badge {
-    font-size: 0.62rem;
-    color: var(--accent);
-    background: var(--accent-bg);
-    border: 1px solid var(--border-accent);
-    padding: 0.2rem 0.55rem;
-    border-radius: 99px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    align-self: flex-start;
-    white-space: nowrap;
-  }
-
-  @media (max-width: 640px) {
-    .role-card {
-      grid-template-columns: 2.5rem 1fr;
-      gap: 1rem;
-      padding: 1.5rem;
-    }
-
-    .role-badge {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-    }
+  @media (max-width: 600px) {
+    .role { grid-template-columns: 1fr; gap: 0.75rem; padding: 1.5rem; }
+    .role-num { display: none; }
   }
 </style>
