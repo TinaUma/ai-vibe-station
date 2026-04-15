@@ -49,6 +49,15 @@ const projects = [
     tags: ['Python', 'Celery', 'Redis', 'Gemini', 'AWS'],
     link: 'https://github.com/TinaUma/test2026',
   },
+  {
+    id: '07',
+    title: 'VisionStyle',
+    type: 'Vision AI',
+    description: 'Загрузи фото — получи структурированный стиль-паспорт: палитра HEX, материалы, настроение, ключевые слова и вердикт. FastAPI + Next.js + Claude Vision. Задеплоено на HuggingFace.',
+    tags: ['Python', 'FastAPI', 'Next.js', 'Claude Vision', 'TypeScript'],
+    link: 'https://github.com/TinaUma/VisionStyle',
+    liveUrl: 'https://tinaume-visionstyle.hf.space',
+  },
 ];
 ---
 
@@ -60,7 +69,7 @@ const projects = [
     </div>
     <div class="projects-grid">
       {projects.map(p => (
-        <a href={p.link} target="_blank" rel="noopener noreferrer" class="project-card">
+        <a href={p.liveUrl ?? p.link} target="_blank" rel="noopener noreferrer" class="project-card">
           <div class="card-top">
             <span class="card-id font-mono">{p.id}</span>
             <span class="card-type font-mono">{p.type}</span>
@@ -71,7 +80,10 @@ const projects = [
             <div class="card-tags">
               {p.tags.map(t => <span class="tag font-mono">{t}</span>)}
             </div>
-            <span class="card-arrow">{p.isVideo ? '▶ демо' : 'GitHub →'}</span>
+            {p.liveUrl
+              ? <span class="card-arrow card-arrow--live">Live Demo ↗</span>
+              : <span class="card-arrow">{p.isVideo ? '▶ демо' : 'GitHub →'}</span>
+            }
           </div>
         </a>
       ))}
@@ -201,6 +213,12 @@ const projects = [
     transition: color 0.2s;
     white-space: nowrap;
   }
+
+  .card-arrow--live {
+    color: var(--orange);
+    opacity: 0.7;
+  }
+  .project-card:hover .card-arrow--live { opacity: 1; }
 
   @media (max-width: 860px) {
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
