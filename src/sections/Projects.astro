@@ -2,6 +2,15 @@
 const projects = [
   {
     id: '01',
+    title: 'VisionStyle',
+    type: 'Vision AI',
+    description: 'Загрузи фото — получи структурированный стиль-паспорт: палитра HEX, материалы, настроение, ключевые слова и вердикт. FastAPI + Next.js + Claude Vision. Задеплоено на HuggingFace.',
+    tags: ['Python', 'FastAPI', 'Next.js', 'Claude Vision', 'TypeScript'],
+    link: 'https://github.com/TinaUma/VisionStyle',
+    liveUrl: 'https://tinaume-visionstyle.hf.space',
+  },
+  {
+    id: '02',
     title: 'Utility Bot',
     type: 'Telegram Bot',
     description: 'Телеграм-бот для учёта коммунальных платежей. Принимает показания счётчиков, рассчитывает стоимость воды и электричества по тарифам, сохраняет в Google Sheets.',
@@ -9,7 +18,23 @@ const projects = [
     link: 'https://github.com/TinaUma/utility-bot',
   },
   {
-    id: '02',
+    id: '03',
+    title: 'LogosYandexART',
+    type: 'Web App',
+    description: 'Flask-приложение для генерации логотипов через Yandex ART API. Простой веб-интерфейс: вводишь описание — получаешь изображение. Ключи API через переменные окружения.',
+    tags: ['Python', 'Flask', 'Yandex ART API'],
+    link: 'https://github.com/TinaUma/LogosYandexART',
+  },
+  {
+    id: '04',
+    title: 'Product Engineer Case',
+    type: 'Technical Case',
+    description: 'Тестовое задание: анализ AI-чатбота для молодёжных программ (VK, Telegram, MAX). Карта сценариев, LLM-классификатор интентов, Human Handoff, A/B тестирование.',
+    tags: ['NLU', 'Gemini', 'GPT-4o-mini', 'Telegram', 'VK'],
+    link: 'https://github.com/TinaUma/TestovoeZadanie-Product-Engineer-',
+  },
+  {
+    id: '05',
     title: 'PitchMe AI Matcher',
     type: 'HR Automation',
     description: 'AI-инструмент для HR-скрининга: принимает PDF резюме и вакансию через webhook, оценивает соответствие кандидата через GPT-4o и возвращает match-score отчёт.',
@@ -17,7 +42,7 @@ const projects = [
     link: 'https://github.com/TinaUma/pitchme-ai-matcher',
   },
   {
-    id: '03',
+    id: '06',
     title: 'AI Media Factory',
     type: 'Autonomous Pipeline',
     description: 'Автономный конвейер новостных видео: ежедневно забирает новости AI-стартапов с Hacker News, генерирует сценарий, создаёт видео с аватаром и публикует в YouTube Shorts.',
@@ -25,7 +50,7 @@ const projects = [
     link: 'https://github.com/TinaUma/ai-media-factory',
   },
   {
-    id: '04',
+    id: '07',
     title: 'RAG + Supabase + Yandex',
     type: 'Knowledge Base',
     description: 'RAG-агент на n8n: забирает документы с Яндекс Диска, хранит как векторы в Supabase, отвечает на вопросы с краткосрочной и долгосрочной памятью.',
@@ -33,7 +58,7 @@ const projects = [
     link: 'https://github.com/TinaUma/rag-n8n-supabase-YANDEXdisk',
   },
   {
-    id: '05',
+    id: '08',
     title: 'AI-ассистент SMAIPL',
     type: 'Demo',
     description: 'Разработала и презентовала AI-ассистента в рамках стажировки. Проектирование промтов, логика диалога, демонстрация возможностей LLM.',
@@ -42,21 +67,12 @@ const projects = [
     isVideo: true,
   },
   {
-    id: '06',
+    id: '09',
     title: 'Contact Enrichment Pipeline',
-    type: 'Technical Case',
+    type: 'Architecture Case',
     description: 'Tiered Early-Exit архитектура для сбора контактов (email, телефон, соцсети) из открытых источников по 1M+ записей. Экономия 3–4× за счёт каскадной остановки на первом совпадении.',
     tags: ['Python', 'Celery', 'Redis', 'Gemini', 'AWS'],
     link: 'https://github.com/TinaUma/test2026',
-  },
-  {
-    id: '07',
-    title: 'VisionStyle',
-    type: 'Vision AI',
-    description: 'Загрузи фото — получи структурированный стиль-паспорт: палитра HEX, материалы, настроение, ключевые слова и вердикт. FastAPI + Next.js + Claude Vision. Задеплоено на HuggingFace.',
-    tags: ['Python', 'FastAPI', 'Next.js', 'Claude Vision', 'TypeScript'],
-    link: 'https://github.com/TinaUma/VisionStyle',
-    liveUrl: 'https://tinaume-visionstyle.hf.space',
   },
 ];
 ---
