@@ -19,11 +19,12 @@ const projects = [
   },
   {
     id: '03',
-    title: 'LogosYandexART',
+    title: 'PDF Signer',
     type: 'Web App',
-    description: 'Flask-приложение для генерации логотипов через Yandex ART API. Простой веб-интерфейс: вводишь описание — получаешь изображение. Ключи API через переменные окружения.',
-    tags: ['Python', 'Flask', 'Yandex ART API'],
-    link: 'https://github.com/TinaUma/LogosYandexART',
+    description: 'Веб-инструмент для наложения рукописной подписи на PDF и изображения. Полностью локально — никакие данные не покидают устройство. FastAPI + React + Docker, задеплоен на VPS.',
+    tags: ['Python', 'FastAPI', 'React', 'Docker'],
+    link: 'https://github.com/TinaUma/PDF_Signer',
+    liveUrl: 'https://tinacodes.space',
   },
   {
     id: '04',
@@ -68,15 +69,6 @@ const projects = [
   },
   {
     id: '09',
-    title: 'PDF Signer',
-    type: 'Web Tool',
-    description: 'Веб-инструмент для наложения рукописной подписи на PDF и изображения. Без облаков, без регистрации — всё обрабатывается локально.',
-    tags: ['FastAPI', 'React', 'Docker', 'PyMuPDF', 'rembg'],
-    link: 'https://github.com/TinaUma/PDF_Signer',
-    liveUrl: 'https://tinacodes.space',
-  },
-  {
-    id: '10',
     title: 'Contact Enrichment Pipeline',
     type: 'Architecture Case',
     description: 'Tiered Early-Exit архитектура для сбора контактов (email, телефон, соцсети) из открытых источников по 1M+ записей. Экономия 3–4× за счёт каскадной остановки на первом совпадении.',
