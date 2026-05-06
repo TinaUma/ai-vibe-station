@@ -11,11 +11,16 @@ const projects = [
   },
   {
     id: '02',
-    title: 'Utility Bot',
-    type: 'Telegram Bot',
-    description: 'Телеграм-бот для учёта коммунальных платежей. Принимает показания счётчиков, рассчитывает стоимость воды и электричества по тарифам, сохраняет в Google Sheets.',
-    tags: ['Python', 'Telegram API', 'Google Sheets'],
-    link: 'https://github.com/TinaUma/utility-bot',
+    title: 'PDFsigner Landing',
+    type: 'Case Study',
+    description: 'Лендинг для PDFsigner, собранный дважды двумя способами: вручную (HTML/CSS) и через Claude Design. Сравнение подходов: скорость vs контроль, прототип vs продакшн.',
+    tags: ['HTML', 'CSS', 'Vanilla JS', 'Claude Design'],
+    link: 'https://github.com/TinaUma/pdf-signer-landing',
+    liveUrl: 'https://tinauma.github.io/pdf-signer-landing/',
+    demoLinks: [
+      { label: 'HTML/CSS версия', url: 'https://tinauma.github.io/pdf-signer-landing/claude-html/' },
+      { label: 'Claude Design версия', url: 'https://tinauma.github.io/pdf-signer-landing/claude-design/' },
+    ],
   },
   {
     id: '03',
@@ -36,11 +41,11 @@ const projects = [
   },
   {
     id: '05',
-    title: 'PitchMe AI Matcher',
-    type: 'HR Automation',
-    description: 'AI-инструмент для HR-скрининга: принимает PDF резюме и вакансию через webhook, оценивает соответствие кандидата через GPT-4o и возвращает match-score отчёт.',
-    tags: ['React', 'n8n', 'GPT-4o', 'TypeScript'],
-    link: 'https://github.com/TinaUma/pitchme-ai-matcher',
+    title: 'h3llo-vpn',
+    type: 'Infrastructure',
+    description: 'Переиспользуемый VPN-прокси контейнер (sing-box + VLESS Reality). Любой сервис в Docker-сети получает прокси тремя строками в compose. Порт не торчит наружу — только внутри сети.',
+    tags: ['Docker', 'sing-box', 'VLESS', 'bash'],
+    link: 'https://github.com/TinaUma/h3llo-vpn-demo',
   },
   {
     id: '06',
@@ -86,13 +91,22 @@ const projects = [
     </div>
     <div class="projects-grid">
       {projects.map(p => (
-        <a href={p.liveUrl ?? p.link} target="_blank" rel="noopener noreferrer" class="project-card">
+        <div class="project-card" role="link" tabindex="0" onclick={`window.open('${p.liveUrl ?? p.link}','_blank')`}>
           <div class="card-top">
             <span class="card-id font-mono">{p.id}</span>
             <span class="card-type font-mono">{p.type}</span>
           </div>
           <h3 class="card-title font-head">{p.title}</h3>
           <p class="card-desc">{p.description}</p>
+          {p.demoLinks && (
+            <div class="card-demos">
+              {p.demoLinks.map(d => (
+                <a href={d.url} target="_blank" rel="noopener noreferrer" class="demo-link" onclick="event.stopPropagation()">
+                  {d.label} ↗
+                </a>
+              ))}
+            </div>
+          )}
           <div class="card-bottom">
             <div class="card-tags">
               {p.tags.map(t => <span class="tag font-mono">{t}</span>)}
@@ -102,7 +116,7 @@ const projects = [
               : <span class="card-arrow">{p.isVideo ? '▶ демо' : 'GitHub →'}</span>
             }
           </div>
-        </a>
+        </div>
       ))}
     </div>
   </div>
@@ -236,6 +250,28 @@ const projects = [
     opacity: 0.7;
   }
   .project-card:hover .card-arrow--live { opacity: 1; }
+
+  .card-demos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .demo-link {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 0.06em;
+    color: var(--orange);
+    text-decoration: none;
+    border: 1px solid rgba(255,85,0,0.35);
+    border-radius: 99px;
+    padding: 0.15rem 0.55rem;
+    transition: background 0.2s, color 0.2s;
+  }
+  .demo-link:hover {
+    background: rgba(255,85,0,0.15);
+    color: #fff;
+  }
 
   @media (max-width: 860px) {
     .projects-grid { grid-template-columns: repeat(2, 1fr); }
