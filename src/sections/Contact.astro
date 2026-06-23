@@ -46,8 +46,8 @@ const links = [
 <style>
   .contact-section {
     padding: 5rem 0 3.5rem;
-    background: var(--bg);
-    border-top: 1px solid var(--border);
+    background: var(--bg-dark);
+    border-top: 1px solid var(--border-dark);
   }
 
   .contact-inner {
@@ -80,21 +80,21 @@ const links = [
     font-size: clamp(1.75rem, 4vw, 2.5rem);
     font-weight: 700;
     letter-spacing: -0.025em;
-    color: var(--text);
+    color: var(--text-on-dark);
     line-height: 1.2;
     margin-bottom: 1rem;
   }
 
   .contact-sub {
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: var(--text-on-dark-secondary);
     line-height: 1.8;
     margin-bottom: 1.25rem;
   }
 
   .contact-tag {
     font-size: 0.7rem;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.3);
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
@@ -102,10 +102,10 @@ const links = [
   .contact-right {
     display: flex;
     flex-direction: column;
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-dark);
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: var(--shadow);
+    background: rgba(255,255,255,0.03);
   }
 
   .contact-row {
@@ -114,30 +114,30 @@ const links = [
     align-items: center;
     gap: 1rem;
     padding: 1.1rem 1.5rem;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-dark);
     text-decoration: none;
     transition: background 0.2s;
   }
 
   .contact-row:last-child { border-bottom: none; }
-  .contact-row:hover { background: var(--orange-bg); }
+  .contact-row:hover { background: rgba(255,85,0,0.08); }
   .contact-row:hover .row-arrow { color: var(--orange); transform: translateX(3px); }
 
   .row-label {
     font-size: 0.8rem;
     font-weight: 500;
-    color: var(--text-secondary);
+    color: rgba(255,255,255,0.45);
   }
 
   .row-value {
     font-size: 0.78rem;
-    color: var(--text);
+    color: var(--text-on-dark);
     letter-spacing: 0.01em;
   }
 
   .row-arrow {
     font-size: 0.85rem;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.25);
     transition: color 0.2s, transform 0.2s;
   }
 
@@ -146,9 +146,9 @@ const links = [
     align-items: center;
     gap: 0.75rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-dark);
     font-size: 0.7rem;
-    color: var(--text-muted);
+    color: rgba(255,255,255,0.3);
     letter-spacing: 0.06em;
   }
 
