@@ -5,8 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://tinauma.github.io',
-  base: '/ai-vibe-station',
+  site: 'https://tinacodes.space',
+  base: '/',
   server: {
     host: '127.0.0.1',
     port: 4321,
