@@ -2,6 +2,20 @@
 const projects = [
   {
     id: '01',
+    title: 'SignDrop',
+    type: 'Web App',
+    flagship: true,
+    description: 'Полнофункциональный инструмент для подписи PDF и изображений прямо в браузере. Библиотека подписей, удаление фона, текстовые аннотации, история, undo/redo. Полностью локально — данные не покидают устройство.',
+    tags: ['Python', 'FastAPI', 'React 19', 'Docker', 'Konva.js'],
+    link: 'https://github.com/TinaUma/signdrop',
+    liveUrl: 'https://signdrop.tinacodes.space',
+    demoLinks: [
+      { label: 'Live Demo ↗', url: 'https://signdrop.tinacodes.space' },
+      { label: 'signdrop.site ↗', url: 'https://signdrop.site' },
+    ],
+  },
+  {
+    id: '02',
     title: 'VisionStyle',
     type: 'Vision AI',
     description: 'Загрузи фото — получи структурированный стиль-паспорт: палитра HEX, материалы, настроение, ключевые слова и вердикт. FastAPI + Next.js + Claude Vision. Задеплоено на HuggingFace.',
@@ -10,7 +24,7 @@ const projects = [
     liveUrl: 'https://tinaume-visionstyle.hf.space',
   },
   {
-    id: '02',
+    id: '03',
     title: 'PDFsigner Landing',
     type: 'Case Study',
     description: 'Лендинг для PDFsigner, собранный дважды двумя способами: вручную (HTML/CSS) и через Claude Design. Сравнение подходов: скорость vs контроль, прототип vs продакшн.',
@@ -21,15 +35,6 @@ const projects = [
       { label: 'HTML/CSS версия', url: 'https://tinauma.github.io/pdf-signer-landing/claude-html/' },
       { label: 'Claude Design версия', url: 'https://tinauma.github.io/pdf-signer-landing/claude-design/' },
     ],
-  },
-  {
-    id: '03',
-    title: 'PDF Signer',
-    type: 'Web App',
-    description: 'Веб-инструмент для наложения рукописной подписи на PDF и изображения. Полностью локально — никакие данные не покидают устройство. FastAPI + React + Docker, задеплоен на VPS.',
-    tags: ['Python', 'FastAPI', 'React', 'Docker'],
-    link: 'https://github.com/TinaUma/PDF_Signer',
-    liveUrl: 'https://tinacodes.space',
   },
   {
     id: '04',
@@ -67,14 +72,26 @@ const projects = [
     </div>
     <div class="projects-grid">
       {projects.map(p => (
-        <div class="project-card" role="link" tabindex="0" onclick={`window.open('${p.liveUrl ?? p.link}','_blank')`}>
+        <div class={`project-card${p.flagship ? ' project-card--flagship' : ''}`} role="link" tabindex="0" onclick={`window.open('${p.liveUrl ?? p.link}','_blank')`}>
           <div class="card-top">
             <span class="card-id font-mono">{p.id}</span>
-            <span class="card-type font-mono">{p.type}</span>
+            <div class="card-top-right">
+              {p.flagship && <span class="card-flagship font-mono">★ flagship</span>}
+              <span class="card-type font-mono">{p.type}</span>
+            </div>
           </div>
           <h3 class="card-title font-head">{p.title}</h3>
           <p class="card-desc">{p.description}</p>
-          {p.demoLinks && (
+          {p.flagship && p.demoLinks && (
+            <div class="card-demos">
+              {p.demoLinks.map(d => (
+                <a href={d.url} target="_blank" rel="noopener noreferrer" class="demo-link demo-link--flagship" onclick="event.stopPropagation()">
+                  {d.label}
+                </a>
+              ))}
+            </div>
+          )}
+          {!p.flagship && p.demoLinks && (
             <div class="card-demos">
               {p.demoLinks.map(d => (
                 <a href={d.url} target="_blank" rel="noopener noreferrer" class="demo-link" onclick="event.stopPropagation()">
@@ -148,10 +165,35 @@ const projects = [
   .project-card:hover { background: rgba(255,85,0,0.07); }
   .project-card:hover .card-arrow { color: var(--orange); }
 
+  .project-card--flagship {
+    background: linear-gradient(135deg, rgba(255,85,0,0.08) 0%, var(--bg-dark) 60%);
+    border-bottom: 2px solid rgba(255,85,0,0.35);
+  }
+  .project-card--flagship:hover {
+    background: linear-gradient(135deg, rgba(255,85,0,0.14) 0%, rgba(255,85,0,0.05) 60%);
+  }
+  .project-card--flagship .card-title {
+    font-size: 1.15rem;
+  }
+
+  .card-flagship {
+    font-size: 0.55rem;
+    color: var(--orange);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+
   .card-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  .card-top-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .card-id {
@@ -246,6 +288,17 @@ const projects = [
   }
   .demo-link:hover {
     background: rgba(255,85,0,0.15);
+    color: #fff;
+  }
+
+  .demo-link--flagship {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.7rem;
+    border-color: rgba(255,85,0,0.5);
+    color: var(--orange);
+  }
+  .demo-link--flagship:hover {
+    background: rgba(255,85,0,0.2);
     color: #fff;
   }
 
