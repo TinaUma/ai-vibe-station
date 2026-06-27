@@ -16,6 +16,18 @@ const projects = [
   },
   {
     id: '02',
+    title: 'WB Margin Analyzer',
+    type: 'SaaS',
+    description: 'WB-продавец с 200+ SKU не видит реальную прибыль: комиссия 15–25% + возвратная логистика ×1.5 превращает "плюс" в минус. Загружаешь два Excel (закупки + продажи) → система считает маржу по каждому товару → цветная таблица + AI-диагноз от Claude. What If симулятор: слайдеры цены/себестоимости пересчитывают маржу без запросов к API. Async-обработка (202 Accepted), JWT, Excel-экспорт.',
+    tags: ['Python', 'FastAPI', 'React 18', 'TypeScript', 'PostgreSQL', 'Claude API', 'Docker'],
+    link: 'https://github.com/TinaUma/wb-margin-analyzer',
+    liveUrl: 'https://wb.tinacodes.space',
+    demoLinks: [
+      { label: 'Live Demo ↗', url: 'https://wb.tinacodes.space' },
+    ],
+  },
+  {
+    id: '03',
     title: 'Dreamora',
     type: 'Voice AI',
     description: 'Telegram-бот соматической расшифровки снов. Голос или текст → Groq Whisper → Claude → Qdrant-поиск паттернов в истории снов. Структурированный ответ: факты, метафора, антидот-мантра, практический шаг.',
@@ -24,7 +36,7 @@ const projects = [
     liveUrl: 'https://t.me/DreamoraBot',
   },
   {
-    id: '03',
+    id: '04',
     title: 'Channelyze',
     type: 'Product',
     description: 'AI-платформа структурирования контента и продаж. Три вложенных инструмента: парсинг Telegram-канала → каталог услуг с PDF-прайсом → интерактивная квиз-воронка диагностики клиента → бот приёма заказов с оплатой через ЮMoney.',
@@ -33,7 +45,7 @@ const projects = [
     liveUrl: 'https://tinauma.github.io/tina-make-me-one/',
   },
   {
-    id: '04',
+    id: '05',
     title: 'VisionStyle',
     type: 'Vision AI',
     description: 'Загрузи фото — получи структурированный стиль-паспорт: палитра HEX, материалы, настроение, ключевые слова и вердикт. FastAPI + Next.js + Claude Vision. Задеплоено на HuggingFace.',
@@ -42,25 +54,12 @@ const projects = [
     liveUrl: 'https://tinaume-visionstyle.hf.space',
   },
   {
-    id: '05',
+    id: '06',
     title: 'h3llo-vpn',
     type: 'Infrastructure',
     description: 'Переиспользуемый VPN-прокси контейнер (sing-box + VLESS Reality). Любой сервис в Docker-сети получает прокси тремя строками в compose. Порт не торчит наружу — только внутри сети.',
     tags: ['Docker', 'sing-box', 'VLESS', 'bash'],
     link: 'https://github.com/TinaUma/h3llo-vpn-demo',
-  },
-  {
-    id: '06',
-    title: 'PDFsigner Landing',
-    type: 'Dev Experiment',
-    description: 'Лендинг для PDFsigner, собранный дважды двумя способами: вручную (HTML/CSS) и через Claude Design. Сравнение подходов: скорость vs контроль, прототип vs продакшн.',
-    tags: ['HTML', 'CSS', 'Vanilla JS', 'Claude Design'],
-    link: 'https://github.com/TinaUma/pdf-signer-landing',
-    liveUrl: 'https://tinauma.github.io/pdf-signer-landing/',
-    demoLinks: [
-      { label: 'HTML/CSS версия', url: 'https://tinauma.github.io/pdf-signer-landing/claude-html/' },
-      { label: 'Claude Design версия', url: 'https://tinauma.github.io/pdf-signer-landing/claude-design/' },
-    ],
   },
 ];
 ---
